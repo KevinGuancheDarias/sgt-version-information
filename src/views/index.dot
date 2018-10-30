@@ -4,13 +4,21 @@
         <title>SGT versions information</title>
     </head>
     <body>
-        <table>
+        <table border="1">
             <tr>
-                <th>Versión</th><th>Publication date</th>
+                <th>Versión</th>
+                <th>Published</th>
+                <th>Publication date</th>
+                <th>Support date</th>
+                <th>Security date</th>
             </tr>
             {{~ it.versions :current:index}}
                 <tr>
-                    <td>{{= current.version }}</td><td>{{= current.publicationDate.toISOString().slice(0,10) }} </td>
+                    <td>{{= current.version }}</td>
+                    <td>{{? current.isPublished }} YES {{??}} NO {{?}}</td>
+                    <td>{{= it.isoDate(current.publicationDate) }} </td>
+                    <td>{{= it.isoDate(current.bugfixSupport) }} </td>
+                    <td>{{= it.isoDate(current.securitySupport) }}</td>
                 </tr>
             {{~}}
         </table>

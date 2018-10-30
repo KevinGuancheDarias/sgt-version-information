@@ -5,6 +5,10 @@ import { Version } from '../entities/version.entity';
 
 @Component()
 export class VersionComponent {
+
+    private static readonly _BUGFIX_SUPPORT = 86400 * 30;
+    private static readonly _SECURITY_SUPPORT = 86400 * 60;
+
     @DatabaseConnection()
     private _connection: Connection;
 
@@ -15,7 +19,12 @@ export class VersionComponent {
         this._repository = this._connection.getRepository(Version);
     }
 
-    public findAll(): Promise<Version[]> {
-        return this._repository.find();
+    public async findAll(): Promise<Version[]> {
+        const versions: Version[] = await this._repository.find();
+        return versions.map(current => {
+            current.bugfixSupport = new Date(current.publicationDate.getTime() + VersionComponent._BUGFIX_SUPPORT * 1000);
+            current.securitySupport = new Date(current.publicationDate.getTime() + VersionComponent._SECURITY_SUPPORT * 1000);
+            return current;
+        });
     }
 }
