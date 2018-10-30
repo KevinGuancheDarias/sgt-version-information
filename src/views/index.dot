@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SGT versions information</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Versión</th><th>Publication date</th>
+            </tr>
+            {{~ it.versions :current:index}}
+                <tr>
+                    <td>{{= current.version }}</td><td>{{= current.publicationDate.toISOString().slice(0,10) }} </td>
+                </tr>
+            {{~}}
+        </table>
+    </body>
+</html>

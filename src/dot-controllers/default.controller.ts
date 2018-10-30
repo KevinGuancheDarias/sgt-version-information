@@ -4,6 +4,8 @@ import {
 } from '@ts-lollipop/core/dist/adapters/controller';
 import { Security } from '@ts-lollipop/core/dist/adapters/controller-security';
 import { ViewInformation } from '@ts-lollipop/core/dist/adapters/controller/pojos/view-information';
+import { Inject } from '@ts-lollipop/core';
+import { VersionComponent } from '../components/version.component';
 
 /**
  * It's the default controller
@@ -16,11 +18,13 @@ import { ViewInformation } from '@ts-lollipop/core/dist/adapters/controller/pojo
 @Security.excludeClass()
 export class DefaultController {
 
+    @Inject()
+    private _versionComponent: VersionComponent;
+
     @Get('')
-    public sayHello(): ViewInformation {
-        return new ViewInformation('hello', {
-            name: 'Kevin',
-            number: 93
+    public async index(): Promise<ViewInformation> {
+        return new ViewInformation('index', {
+            versions: await this._versionComponent.findAll()
         });
     }
 }

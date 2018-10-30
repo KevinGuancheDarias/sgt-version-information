@@ -21,8 +21,9 @@
   "license": "MIT",
   "dependencies": {
     "@ts-lollipop/core": "0.2.0",
-    "@ts-lollipop/express-controller-adapter": "0.2.0",
     "@ts-lollipop/dot-controller-adapter": "0.2.0",
+    "@ts-lollipop/express-controller-adapter": "0.2.0",
+    "@ts-lollipop/typeorm-database-adapter": "^0.2.0",
     "@types/node": "^10.0.9",
     "sqlite3": "^4.0.0",
     "ts-node": "^6.0.3",

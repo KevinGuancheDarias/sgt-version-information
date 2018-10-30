@@ -1,5 +1,0 @@
-<h1>Hello World!</h1>
-
-Name is <b>{{= it.name }}</b>, number is <b>{{= it.number }}</b>
-
-In Memory!
