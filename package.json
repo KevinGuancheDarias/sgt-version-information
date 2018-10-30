@@ -1,11 +1,12 @@
 {
-  "name": "lollipop-test-dot",
-  "version": "0.2.0",
-  "description": "Lollipop example DotController project",
+  "name": "sgt-version-information",
+  "version": "0.1.0",
+  "description": "Interface to display information about current versions of SGT that has support",
   "repository": {
     "type": "git",
-    "url": "https://github.com/KevinGuancheDarias/ts-lollipop.git"
+    "url": "https://github.com/KevinGuancheDarias/sgt-version-information.git"
   },
+  "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
